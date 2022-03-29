@@ -14,6 +14,9 @@ class ResultViewController: UIViewController {
     // 3. Отобразить результат в соответствии с этим животным
     // 4. Избавиться от кнопки возврата на предыдущий экран
 
+    @IBOutlet var resultSmileLabel: UILabel!
+    @IBOutlet var defenitionLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
