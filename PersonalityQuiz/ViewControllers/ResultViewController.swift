@@ -17,6 +17,11 @@ class ResultViewController: UIViewController {
     @IBOutlet var resultSmileLabel: UILabel!
     @IBOutlet var defenitionLabel: UILabel!
     
+    var catCount = 0
+    var dogCount = 0
+    var rabbitCount = 0
+    var turtleCount = 0
+    
     var finalArray: [Answer] = []
     var resultArray: [Answer] = []
     
@@ -25,5 +30,36 @@ class ResultViewController: UIViewController {
         finalArray = resultArray
     }
     
-    self.navigationItem.leftBarButtonItem = nil
+    private func howMuchAnimals() -> Int {
+        
+        for animal in finalArray {
+            if animal.animal == .cat {
+                catCount += 1
+                
+            }
+            if animal.animal == .dog {
+                dogCount += 1
+                
+            }
+            if animal.animal == .rabbit {
+                rabbitCount += 1
+                
+            }
+            if animal.animal == .turtle {
+                turtleCount += 1
+                
+            }
+            
+        }
+        return catCount
+        return dogCount
+        return rabbitCount
+        return turtleCount
+    }
+        
+        var wildAnimals = ["cat": catCount,
+                          "dog": dogCount,
+                          "rabbit": rabbitCount,
+                          "turtle": turtleCount]
+    }
 }
