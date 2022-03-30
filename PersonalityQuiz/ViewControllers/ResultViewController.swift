@@ -30,36 +30,53 @@ class ResultViewController: UIViewController {
         finalArray = resultArray
     }
     
-    private func howMuchAnimals() -> Int {
+    private func howMuchAnimals() {
         
         for animal in finalArray {
             if animal.animal == .cat {
                 catCount += 1
-                
+
             }
-            if animal.animal == .dog {
+            else if animal.animal == .dog {
                 dogCount += 1
                 
             }
-            if animal.animal == .rabbit {
+            else if animal.animal == .rabbit {
                 rabbitCount += 1
                 
             }
-            if animal.animal == .turtle {
+            else if animal.animal == .turtle {
                 turtleCount += 1
-                
             }
-            
         }
-        return catCount
-        return dogCount
-        return rabbitCount
-        return turtleCount
     }
         
-        var wildAnimals = ["cat": catCount,
-                          "dog": dogCount,
-                          "rabbit": rabbitCount,
-                          "turtle": turtleCount]
+      
+    private func abrara() {
+        
+        var finalAnimal: Animal
+    
+        let wildAnimals = [Animal.cat: catCount,
+                           Animal.dog: dogCount,
+                           Animal.rabbit: rabbitCount,
+                           Animal.turtle: turtleCount]
+        
+        for (animal, numberOfAnimal) in wildAnimals {
+            
+            if numberOfAnimal == 3 {
+                finalAnimal = animal
+            }
+            
+            else if numberOfAnimal == 2 {
+                finalAnimal = animal.first.contains(2)
+            
+            }
+        }
+        
     }
-}
+    
+    
+    
+   
+    }
+
