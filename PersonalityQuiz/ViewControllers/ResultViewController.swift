@@ -17,8 +17,13 @@ class ResultViewController: UIViewController {
     @IBOutlet var resultSmileLabel: UILabel!
     @IBOutlet var defenitionLabel: UILabel!
     
+    var finalArray: [Answer] = []
+    var resultArray: [Answer] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        finalArray = resultArray
     }
+    
+    self.navigationItem.leftBarButtonItem = nil
 }
