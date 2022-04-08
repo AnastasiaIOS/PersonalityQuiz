@@ -36,6 +36,30 @@ class ResultViewController: UIViewController {
         findMaxAnimals()
     }
     
+    
+    
+    
+    private func findMaxAnimals() {
+        
+        howMuchAnimals()
+        
+        let wildAnimals = [Animal.cat: catCount,
+                           Animal.dog: dogCount,
+                           Animal.rabbit: rabbitCount,
+                           Animal.turtle: turtleCount]
+        
+        // след. реализацию также подсмотрела, т.к. не понимала как на языке написать алгоритм. В связи с этим вопросы:
+        // 1) как понять, что тут можно использовать замыкания и откуда можно узнать, что можно таким образом сравнивать значения, т.е. использовать sorted и сравнивать значения указав их как $0.value.
+        // 2) почему мы тут используем guard?
+        // 3) А если у нас после прохождения теста получилось одинаковое кол-во животных, как в таком случае сработает алгоритм?
+       
+        let sortedAnimals = wildAnimals.sorted { $0.value > $1.value }
+        guard let firstSortedAnimals = sortedAnimals.first?.key else {return}
+        
+        updateResult(with: firstSortedAnimals)
+        
+        }
+    
     private func howMuchAnimals() {
         
         for animal in finalArray {
@@ -57,30 +81,9 @@ class ResultViewController: UIViewController {
         }
     }
     
-    
-    private func findMaxAnimals() {
-        
-        howMuchAnimals()
-        
-        let wildAnimals = [Animal.cat: catCount,
-                           Animal.dog: dogCount,
-                           Animal.rabbit: rabbitCount,
-                           Animal.turtle: turtleCount]
-        
-        // след. реализацию также подсмотрела, т.к. не понимала как на языке написать алгоритм. В связи с этим вопросы:
-        // 1) как понять, что тут можно использовать замыкания и откуда можно узнать, что можно таким образом сравнивать значения, т.е. использовать sorted и сравнивать значения указав их как $0.value.
-        // 2) почему мы тут используем guard?
-        // 3) А если у нас после прохождения теста получилось одинаковое кол-во животных, как в таком случае сработает алгоритм?
-        
-        let sortedAnimals = wildAnimals.sorted { $0.value > $1.value }
-        guard let firstSortedAnimals = sortedAnimals.first?.key else {return}
-        
-        updateResult(with: firstSortedAnimals)
-        
-        }
-    
     private func updateResult(with animal: Animal) {
-        resultSmileLabel.text = "Вы - \("
+        resultSmileLabel.text = "Вы - \(animal.rawValue)"
+        defenitionLabel.text = animal.definition
     }
         
     }
