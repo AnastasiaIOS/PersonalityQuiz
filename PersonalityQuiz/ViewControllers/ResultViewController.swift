@@ -13,7 +13,7 @@ class ResultViewController: UIViewController {
     // 2. Определить наиболее часто встречающийся тип животного
     // 3. Отобразить результат в соответствии с этим животным
     // 4. Избавиться от кнопки возврата на предыдущий экран
-
+    
     @IBOutlet var resultSmileLabel: UILabel!
     @IBOutlet var defenitionLabel: UILabel!
     
@@ -22,12 +22,18 @@ class ResultViewController: UIViewController {
     var rabbitCount = 0
     var turtleCount = 0
     
+    // var answers: [Answer]! < --- вопрос к реализации из разбора - Подскажите, пожалуйста, как так получается, что выбранные пользователем ответы сохраняются в этот массив? Только потому что мы объявили массив с типом Answer?Непонятно(((
+    
     var finalArray: [Answer] = []
     var resultArray: [Answer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true // <---реализацию подсмотрела в разборе( подскажите, пожалуйста
+                                                // как правильно  в документации надо было смотреть чтобы
+                                                // понять что надо было сделать именно так
         finalArray = resultArray
+        findMaxAnimals()
     }
     
     private func howMuchAnimals() {
@@ -35,7 +41,7 @@ class ResultViewController: UIViewController {
         for animal in finalArray {
             if animal.animal == .cat {
                 catCount += 1
-
+                
             }
             else if animal.animal == .dog {
                 dogCount += 1
@@ -50,33 +56,39 @@ class ResultViewController: UIViewController {
             }
         }
     }
-        
-      
-    private func abrara() {
-        
-        var finalAnimal: Animal
     
+    
+    private func findMaxAnimals() {
+        
+        howMuchAnimals()
+        
         let wildAnimals = [Animal.cat: catCount,
                            Animal.dog: dogCount,
                            Animal.rabbit: rabbitCount,
                            Animal.turtle: turtleCount]
         
-        for (animal, numberOfAnimal) in wildAnimals {
-            
-            if numberOfAnimal == 3 {
-                finalAnimal = animal
-            }
-            
-            else if numberOfAnimal == 2 {
-                finalAnimal = animal.first.contains(2)
-            
-            }
+        // след. реализацию также подсмотрела, т.к. не понимала как на языке написать алгоритм. В связи с этим вопросы:
+        // 1) как понять, что тут можно использовать замыкания и откуда можно узнать, что можно таким образом сравнивать значения, т.е. использовать sorted и сравнивать значения указав их как $0.value.
+        // 2) почему мы тут используем guard?
+        // 3) А если у нас после прохождения теста получилось одинаковое кол-во животных, как в таком случае сработает алгоритм?
+        
+        let sortedAnimals = wildAnimals.sorted { $0.value > $1.value }
+        guard let firstSortedAnimals = sortedAnimals.first?.key else {return}
+        
+        updateResult(with: firstSortedAnimals)
+        
         }
+    
+    private func updateResult(with animal: Animal) {
+        resultSmileLabel.text = "Вы - \("
+    }
         
     }
     
-    
-    
-   
-    }
+
+
+
+
+
+
 
