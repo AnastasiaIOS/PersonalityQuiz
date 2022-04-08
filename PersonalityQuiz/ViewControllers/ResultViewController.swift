@@ -30,8 +30,8 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true // <---реализацию подсмотрела в разборе( подскажите, пожалуйста
-                                                // как правильно  в документации надо было смотреть чтобы
-                                                // понять что надо было сделать именно так
+        // как правильно  в документации надо было смотреть чтобы
+        // понять что надо было сделать именно так
         finalArray = resultArray
         findMaxAnimals()
     }
@@ -48,17 +48,17 @@ class ResultViewController: UIViewController {
                            Animal.rabbit: rabbitCount,
                            Animal.turtle: turtleCount]
         
-        // след. реализацию также подсмотрела, т.к. не понимала как на языке написать алгоритм. В связи с этим вопросы:
-        // 1) как понять, что тут можно использовать замыкания и откуда можно узнать, что можно таким образом сравнивать значения, т.е. использовать sorted и сравнивать значения указав их как $0.value.
+        // след. реализацию также подсмотрела, т.к. не понимала как на языке написать алгоритм. В связи с этим вопросы, помогите, пожалуйста, разобраться:
+        // 1) как понять, что тут можно использовать замыкания и откуда можно узнать, что можно таким образом сравнивать значения, т.е. использовать sorted и сравнивать значения указав их как $0.value.Я бы совсем не долгадалась работать со значениями через $0.value
         // 2) почему мы тут используем guard?
-        // 3) А если у нас после прохождения теста получилось одинаковое кол-во животных, как в таком случае сработает алгоритм?
-       
+        // 3) А если у нас после прохождения теста получилось одинаковое кол-во животных, как в таком случае сработает алгоритм? просто берем первый из словаря?
+        
         let sortedAnimals = wildAnimals.sorted { $0.value > $1.value }
         guard let firstSortedAnimals = sortedAnimals.first?.key else {return}
         
         updateResult(with: firstSortedAnimals)
         
-        }
+    }
     
     private func howMuchAnimals() {
         
@@ -85,9 +85,8 @@ class ResultViewController: UIViewController {
         resultSmileLabel.text = "Вы - \(animal.rawValue)"
         defenitionLabel.text = animal.definition
     }
-        
-    }
-    
+}
+
 
 
 
